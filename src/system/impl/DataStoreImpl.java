@@ -1,6 +1,5 @@
 package system.impl;
 
-import java.util.Optional;
 import java.util.function.Consumer;
 
 import datamodel.*;
@@ -26,9 +25,7 @@ class DataStoreImpl implements DataStore, DataBuilder {
      * internal Customer-, Article- and Order-Factories, implement the
      * DataFactory<T, ID> interface
      */
-    private final DataFactory<Customer, Long> customerFactory;
-    private final DataFactory<Article, String> articleFactory;
-    private final DataFactory<Order, String> orderFactory;
+    private final DataFactories dataFactories;
 
     /**
      * injected reference to repositories holding Customer-, Article- and Order objects
@@ -46,49 +43,12 @@ class DataStoreImpl implements DataStore, DataBuilder {
      * @param ordersRepository injected reference to orders repository
      */
     DataStoreImpl(
+        DataFactories dataFactories,
         Repository<Customer, Long> customersRepository,
         Repository<Article, String> articlesRepository,
         Repository<Order, String> ordersRepository
     ) {
-        this.customerFactory = new DataFactory<>() {
-            @Override public Customer create(Long id, String name) {
-                Customer customer = new Customer(name)
-                        .setId(id);
-                customersRepository.save(customer);	// requires id is set
-                return customer;
-            }
-
-            @Override public Optional<Customer> create(Long id, Optional<Customer> customer) {
-                throw new UnsupportedOperationException("method not supported for type Customer");
-            }
-        };
-        this.articleFactory = new DataFactory<>() {
-            @Override public Article create(String id, String name) {
-                Article article = new Article()
-                        .setId(id);
-                articlesRepository.save(article);	// requires id is set
-                return article.setDescription(name);
-            }
-
-            @Override public Optional<Article> create(String id, Optional<Customer> customer) {
-                throw new UnsupportedOperationException("method not supported for type Article");
-            }
-        };
-        this.orderFactory = new DataFactory<>() {
-            @Override public Order create(String id, String name) {
-                throw new UnsupportedOperationException("method not supported for type Order");
-            }
-
-            @Override public Optional<Order> create(String id, Optional<Customer> customer) {
-                if(customer.isPresent()) {
-                    Order order = new Order(customer.get())
-                            .setId(id);
-                    ordersRepository.save(order);	// requires id is set
-                    return Optional.of(order);
-                }
-                return Optional.empty();
-            }
-        };
+        this.dataFactories = dataFactories;
         this.customersRepository = customersRepository;
         this.articlesRepository = articlesRepository;
         this.ordersRepository = ordersRepository;
@@ -111,7 +71,7 @@ class DataStoreImpl implements DataStore, DataBuilder {
      */
     @Override
     public DataBuilder buildCustomers(Consumer<DataFactory<Customer, Long>> factory) {
-        factory.accept(customerFactory);
+        factory.accept(dataFactories.customerFactory());
         return this;
     }
 
@@ -123,7 +83,7 @@ class DataStoreImpl implements DataStore, DataBuilder {
      */
     @Override
     public DataBuilder buildArticles(Consumer<DataFactory<Article, String>> factory) {
-        factory.accept(articleFactory);
+        factory.accept(dataFactories.articleFactory());
         return this;
     }
 
@@ -135,7 +95,7 @@ class DataStoreImpl implements DataStore, DataBuilder {
      */
     @Override
     public DataBuilder buildOrders(OrdersFactory factory) {
-        factory.accept(customersRepository, articlesRepository, orderFactory);
+        factory.accept(customersRepository, articlesRepository, dataFactories.orderFactory());
         return this;
     }
 
@@ -165,5 +125,4 @@ class DataStoreImpl implements DataStore, DataBuilder {
     public Repository<Order, String> orders() {
         return ordersRepository;
     }
-
 }
