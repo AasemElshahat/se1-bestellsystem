@@ -16,11 +16,9 @@ public class RepositoryImpl<T, ID> implements Repository<T, ID> {
 	/**
 	 * Map that actually stores {@link datamodel} objects of type T.
 	 */
-	private final Map<ID, T> storage = new HashMap<>();
+	private final Map<ID, T> storage = new HashMap<>(); // using map instead if list because Map is faster for lookups and
+																											// removals than List.
 
-	/**
-	 * Externally provided function that obtains id from entity.
-	 */
 	private final Function<T, ID> getIdFunc;
 
 	/**
@@ -121,11 +119,9 @@ public class RepositoryImpl<T, ID> implements Repository<T, ID> {
 	public <S extends T> S save(S entity) {
 		if (entity == null)
 			throw new IllegalArgumentException("argument entity is null.");
-		//
 		ID id = getIdFunc.apply(entity);
 		if (id == null)
 			throw new IllegalArgumentException("entity id is null.");
-		//
 		storage.put(id, entity);
 		return entity;
 	}
@@ -143,7 +139,6 @@ public class RepositoryImpl<T, ID> implements Repository<T, ID> {
 	public <S extends T> Iterable<S> saveAll(Iterable<S> entities) {
 		if (entities == null)
 			throw new IllegalArgumentException("argument entities is null.");
-		//
 		List<S> result = new ArrayList<>();
 		for (S entity : entities) {
 			save(entity);

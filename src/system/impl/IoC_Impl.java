@@ -52,8 +52,8 @@ public class IoC_Impl implements IoC {
      * Private constructor to implement Singleton pattern of IoC instance.
      */
     private IoC_Impl() {
-        this.calculator = new CalculatorImpl(); // replace mock with own class CalculatorImpl.java
-        this.formatter = new FormatterImpl(); // replace mock with own class FormatterImpl.java
+        this.calculator = new CalculatorImpl();
+        this.formatter = new FormatterImpl();
 
         // prepare depndencies injected into DataStoreImpl
         var customersRepository = new RepositoryImpl<Customer, Long>(c -> c.getId());

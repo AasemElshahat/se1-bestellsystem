@@ -73,9 +73,9 @@ public class FormatterImpl implements Formatter {
 
 	private String getFirstContact(Iterable<String> contacts) {
 		for (String contact : contacts) {
-			return contact; // Return the first contact found
+			return contact;
 		}
-		return ""; // Return empty string if contacts is empty
+		return "";
 	}
 
 	private int countContacts(Iterable<String> contacts) {
