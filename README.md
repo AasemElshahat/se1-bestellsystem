@@ -1,13 +1,13 @@
-<!-- 
+<!--
     README.md in branch D12-Datamodel
  -->
 
-# Aufgabe D12: *Datamodel*
+# Aufgabe D12: _Datamodel_
 
-The assignment completes the datamodel with classes *Article.java*, *Order.java*
-and *OrderItem.java* classes. *Customer.java* already exists from the previous
-assignment. In addition, two *enum* are used in the data model:
-*Currency.java* amd *TAX.java*.
+The assignment completes the datamodel with classes _Article.java_, _Order.java_
+and _OrderItem.java_ classes. _Customer.java_ already exists from the previous
+assignment. In addition, two _enum_ are used in the data model:
+_Currency.java_ amd _TAX.java_.
 
 The data model is (UML Class Diagram, see also StarUML-file:
 [Datamodel.mdj](src/datamodel/Datamodel.mdj)
@@ -15,31 +15,31 @@ The data model is (UML Class Diagram, see also StarUML-file:
 
 <img src="src/datamodel/Datamodel.png" alt="drawing" width="800"/>
 
-
 Content:
 
 - [Setup](#1-setup) - Fetching Branches and Sourcing the Project
-    - branch: [C12-Customer](https://github.com/sgra64/se1.bestellsystem/tree/C12-Customer),
-    - branch: [D12-Datamodel](https://github.com/sgra64/se1.bestellsystem/tree/D12-Datamodel).
+
+  - branch: [C12-Customer](https://github.com/sgra64/se1.bestellsystem/tree/C12-Customer),
+  - branch: [D12-Datamodel](https://github.com/sgra64/se1.bestellsystem/tree/D12-Datamodel).
 
 - [D1: Completing the Datamodel](#d1-completing-the-datamodel)
-    - Datamodel Generation and Completion
-    - Building and Running the Application
-    - Running JUnit Tests
-    - Code Coverage Reports
-    - Javadoc for Complete Datamodel
+
+  - Datamodel Generation and Completion
+  - Building and Running the Application
+  - Running JUnit Tests
+  - Code Coverage Reports
+  - Javadoc for Complete Datamodel
 
 - [D2: Completing Features](#d2-completing-features)
-    - New Articles, Customers and Orders (steps 1-3)
-    - *find()* - method (step 4)
-    - *printOrder()* - method (steps 5)
-    - order value and tax calculations (steps 6-9)
 
+  - New Articles, Customers and Orders (steps 1-3)
+  - _find()_ - method (step 4)
+  - _printOrder()_ - method (steps 5)
+  - order value and tax calculations (steps 6-9)
 
 - [Release Preparation](#release-preparation)
-    - Packaging the Application
-    - Running the packaged Application
-
+  - Packaging the Application
+  - Running the packaged Application
 
 &nbsp;
 
@@ -119,7 +119,6 @@ git branch -avv
 
 <img src="https://github.com/sgra64/se1.bestellsystem/blob/markup/D12-Datamodel/D1_setup_branches.png?raw=true" alt="drawing" width="800"/>
 
-
 &nbsp;
 
 Content of branch `C12-Customer` can now be merged into branch `D12-Datamodel`
@@ -130,8 +129,8 @@ to complete files missing from that branch:
 git merge --allow-unrelated-histories --strategy-option ours C12-Customer
 ```
 
-As result, tests for *Articles*, *Orders* (from branch `D12-Datamodel`)
-and tests for *Customers* (merged from branch `C12-Customer`) should show:
+As result, tests for _Articles_, _Orders_ (from branch `D12-Datamodel`)
+and tests for _Customers_ (merged from branch `C12-Customer`) should show:
 
 ```sh
 find tests
@@ -165,7 +164,6 @@ The project can now be sourced to set the project environment:
 source .env/setenv.sh           # source project
 ```
 
-
 &nbsp;
 
 ## D1: Completing the Datamodel
@@ -180,7 +178,6 @@ source .env/setenv.sh           # source project
 
 - D1.e - [Javadoc for Complete Datamodel](#d1e-javadoc-for-complete-datamodel)
 
-
 &nbsp;
 
 ### D1.a Datamodel Generation and Completion
@@ -192,9 +189,9 @@ contains UML model of the `datamodel` classes.
 You should have a completed class `Customer.java` from the previous
 assignment. Keep it.
 
-Open with *StarUML* and extract classes from the UML-Model:
+Open with _StarUML_ and extract classes from the UML-Model:
 
-- Tools -> Java -> Generate Code -> select *"datamodel"* -> OK
+- Tools -> Java -> Generate Code -> select _"datamodel"_ -> OK
 
 - select folder to save datamodel classes
 
@@ -205,6 +202,7 @@ Classes in `src/datamodel` should now be present:
 ```sh
 find src/datamodel
 ```
+
 ```
 src/datamodel
 src/datamodel/Article.java
@@ -226,6 +224,7 @@ Adjust `src/datamodel` classes to compile.
 ```sh
 mk compile
 ```
+
 ```
 javac $(find src -name '*.java') -d bin/classes; \
 copy resources bin/resources
@@ -239,7 +238,6 @@ Complete methods in classes according to javadocs:
 - `Order.java` and
 
 - `OrderItem.java`.
-
 
 &nbsp;
 
@@ -307,7 +305,6 @@ Bestellungen:
 done.
 ```
 
-
 &nbsp;
 
 ### D1.c Running JUnit Tests
@@ -359,7 +356,7 @@ to verify they are passing with your implementation of classes. Fix failures.
   - datamodel.Order_400_OrderItems_Tests
 ```
 
-The full test-suite of *Customer* tests runs
+The full test-suite of _Customer_ tests runs
 
 ```sh
 mk run-tests
@@ -387,12 +384,11 @@ Remove tests that are failing.
 
 Run JUnit-Tests also in your IDE.
 
-
 &nbsp;
 
 ### D1.d Code Coverage Report
 
-<!-- 
+<!--
 https://stackoverflow.com/questions/17973067/how-to-use-jacoco-exec-report
 https://stackoverflow.com/questions/40810496/jacoco-report-in-command-line
 
@@ -405,12 +401,12 @@ Jacoco agent and CLI:
 is a **metric of code quality** defined by the ratio of instructions executed
 during JUnit tests and the total number of instructions in the code base.
 
-When JUnit tests run, tested code (*"units-under-test"*) is exercised.
+When JUnit tests run, tested code (_"units-under-test"_) is exercised.
 Depending on breath and detail tested in JUnit tests, more code is exercised.
 
-*Code Coverage* of, e.g. 72% means that during execution of JUnit tests, 72% of
-instructions in tested code were executed at least once (*covered*) - 28% were
-not (*not covered*).
+_Code Coverage_ of, e.g. 72% means that during execution of JUnit tests, 72% of
+instructions in tested code were executed at least once (_covered_) - 28% were
+not (_not covered_).
 
 Covering code does not mean it is correct - it simply means, it was executed
 during JUnit tests while uncovered code was not.
@@ -418,33 +414,32 @@ during JUnit tests while uncovered code was not.
 In order to obtain coverage, specialized
 [Code Coverage Tools](https://en.wikipedia.org/wiki/Java_code_coverage_tools)
 are used that exist for all programming languages such as
-[*Jacoco*](https://www.jacoco.org) for *Java*,
-[*Istanbul*](https://istanbul.js.org) for *JavaScript* or
-[*Coverage.py*](https://coverage.readthedocs.io) for *Python*).
+[_Jacoco_](https://www.jacoco.org) for _Java_,
+[_Istanbul_](https://istanbul.js.org) for _JavaScript_ or
+[_Coverage.py_](https://coverage.readthedocs.io) for _Python_).
 
-Obtaining code coverage consists of two steps (for *Jacoco*):
+Obtaining code coverage consists of two steps (for _Jacoco_):
 
-1. *Recording* the execution of JUnit tests by the
-    [Jacoco-Agent](https://www.jacoco.org/jacoco/trunk/doc/agent.html).
-    The result of the recording is a file: `jacoco.exec` in a new directory
-    in the project: `coverage`.
+1. _Recording_ the execution of JUnit tests by the
+   [Jacoco-Agent](https://www.jacoco.org/jacoco/trunk/doc/agent.html).
+   The result of the recording is a file: `jacoco.exec` in a new directory
+   in the project: `coverage`.
 
-1. Generation of a *Coverage Report* for relevant classes
-    (coverage of test-classes is not relevant, only for tested classes).
-    Reports are generated by a command using the
-    [Jacoco Command Line Interface](https://www.jacoco.org/jacoco/trunk/doc/cli.html)
-    (CLI).
+1. Generation of a _Coverage Report_ for relevant classes
+   (coverage of test-classes is not relevant, only for tested classes).
+   Reports are generated by a command using the
+   [Jacoco Command Line Interface](https://www.jacoco.org/jacoco/trunk/doc/cli.html)
+   (CLI).
 
-    The report is generated as *HTML* (it can also be generated in other formats
-    such as *.csv* or *.xml* for further processing).
+   The report is generated as _HTML_ (it can also be generated in other formats
+   such as _.csv_ or _.xml_ for further processing).
 
-*Jacoco* .jar files are present in the `libs` directory:
+_Jacoco_ .jar files are present in the `libs` directory:
 
 - `jacocoagent.jar` -- agent for recording the execution of instructions during
-    JUnit tests.
+  JUnit tests.
 
 - `jacococli.jar` -- for report generation.
-
 
 Step 1:
 
@@ -519,13 +514,14 @@ java $(eval echo $JACOCO_AGENT) \
     -c datamodel.Customer_500_SetNameExtended_Tests
 ```
 
-JUnit tests execute again, but now with the `` recording.
-The result is created in a new file `jacoco.exec` in a new directory `coverage`
+JUnit tests execute again, but now with the ``recording.
+The result is created in a new file`jacoco.exec`in a new directory`coverage`
 in the project directory:
 
 ```sh
 ls -la coverage
 ```
+
 ```
 total 40
 drwxr-xr-x 1 svgr2 Kein     0 May 25 17:13 .
@@ -533,10 +529,9 @@ drwxr-xr-x 1 svgr2 Kein     0 May 25 17:13 ..
 -rw-r--r-- 1 svgr2 Kein 34172 May 25 17:13 jacoco.exec
 ```
 
-
 Step 2:
 
-A *code coverage report* is created from the recording of JUnit test execution.
+A _code coverage report_ is created from the recording of JUnit test execution.
 
 Classes to analyze are specified by a variable:
 
@@ -554,7 +549,7 @@ analyze_classes=(
 )
 ```
 
-Based on this definition and the recording, the *code coverage report* can be created.
+Based on this definition and the recording, the _code coverage report_ can be created.
 
 ```sh
 mk coverage-report
@@ -571,11 +566,10 @@ done.
 
 Open the report in a browser `coverage/index.html`.
 
-For package `datamodel`, a *code coverage* of 95% was achieved by executing
+For package `datamodel`, a _code coverage_ of 95% was achieved by executing
 all JUnit tests.
 
 <img src="https://github.com/sgra64/se1.bestellsystem/blob/markup/D12-Datamodel/D1_coverage_1.png?raw=true" alt="drawing" width="800"/>
-
 
 &nbsp;
 
@@ -583,13 +577,11 @@ Opening the `datamodel` reveals more detail about coverages of classes from this
 
 <img src="https://github.com/sgra64/se1.bestellsystem/blob/markup/D12-Datamodel/D1_coverage_2.png?raw=true" alt="drawing" width="800"/>
 
-
 &nbsp;
 
 Inside the `Customer` class coverages of methods are shown:
 
 <img src="https://github.com/sgra64/se1.bestellsystem/blob/markup/D12-Datamodel/D1_coverage_3.png?raw=true" alt="drawing" width="800"/>
-
 
 &nbsp;
 
@@ -600,7 +592,7 @@ Finally, coverage of the `addContact()` method in class `Customer` can be inspec
 - Red lines show instructions that were not.
 
 - Yellow lines show partial executions where one part of the line was exercised and
-    the other was not.
+  the other was not.
 
 <img src="https://github.com/sgra64/se1.bestellsystem/blob/markup/D12-Datamodel/D1_coverage_Customer.png?raw=true" alt="drawing" width="800"/>
 
@@ -609,17 +601,17 @@ Finally, coverage of the `addContact()` method in class `Customer` can be inspec
 [Full coverage reports](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage)
 exist for all for classes:
 
-- *Customer.java*   - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/Customer.java.html#L1)),
+- _Customer.java_ - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/Customer.java.html#L1)),
 
-- *Article.java*    - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/Article.java.html#L1)),
+- _Article.java_ - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/Article.java.html#L1)),
 
-- *Order.java*      - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/Order.java.html#L1)),
+- _Order.java_ - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/Order.java.html#L1)),
 
-- *OrderItem.java*  - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/OrderItem.java.html#L1)),
+- _OrderItem.java_ - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/OrderItem.java.html#L1)),
 
-- *Currency.java*   - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/Currency.java.html#L1)),
+- _Currency.java_ - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/Currency.java.html#L1)),
 
-- *TAX.java*        - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/TAX.java.html#L1)).
+- _TAX.java_ - ([coverage report](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/coverage/datamodel/TAX.java.html#L1)).
 
 &nbsp;
 
@@ -629,6 +621,7 @@ Other formats can be generated for coverage reports such as `.csv` or `.xml`.
 coverage_report csv
 coverage_report xml
 ```
+
 ```
 [INFO] Analyzing 6 classes.
 ```
@@ -638,11 +631,11 @@ Verify reports have been generated:
 ```sh
 ls -la coverage/coverage*
 ```
+
 ```
 -rw-r--r-- 1 svgr2 Kein   572 May 25 19:53 coverage/coverage.csv
 -rw-r--r-- 1 svgr2 Kein 24767 May 25 19:55 coverage/coverage.xml
 ```
-
 
 &nbsp;
 
@@ -662,18 +655,17 @@ Result is in sub-directory `docs` with
 Package [datamodel](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/package-summary.html)
 contains Javadoc for classes:
 
-- *Customer.java*   - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/Customer.html)),
+- _Customer.java_ - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/Customer.html)),
 
-- *Article.java*    - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/Article.html)),
+- _Article.java_ - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/Article.html)),
 
-- *Order.java*      - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/Order.html)),
+- _Order.java_ - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/Order.html)),
 
-- *OrderItem.java*  - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/OrderItem.html)),
+- _OrderItem.java_ - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/OrderItem.html)),
 
-- *Currency.java*   - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/Currency.html)),
+- _Currency.java_ - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/Currency.html)),
 
-- *TAX.java*        - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/TAX.html)).
-
+- _TAX.java_ - ([javadoc](https://sgra64.github.io/se1.bestellsystem/D12-Datamodel/javadoc/se1.bestellsystem/datamodel/TAX.html)).
 
 &nbsp;
 
@@ -687,12 +679,11 @@ The assignment is structured in four stages:
 
 - D2.a - [New Articles, Customers and Orders](#d2a-new-articles-customers-and-orders)
 
-- D2.b - [*find()* method](#d2b-find-method)
+- D2.b - [_find()_ method](#d2b-find-method)
 
-- D2.c - [*printOrder()* method](#d2c-printorder-method)
+- D2.c - [_printOrder()_ method](#d2c-printorder-method)
 
 - D2.d - [Order Value and Tax Calculations](#d2d-order-value-and-tax-calculations)
-
 
 &nbsp;
 
@@ -719,7 +710,6 @@ Output:
 
 Read code and understand how it works, then complete the requested task.
 
-
 ### D2.a New Articles, Customers and Orders
 
 @TODO: (1. - 3.)
@@ -732,31 +722,31 @@ Navigate to label @TODO (1.) and complete the challenge:
  *  - id: 651286, name: "Lena Neumann", contact: "lena228@gmail.com"
  * //
  * and add to List<Customer> customers;
- * 
+ *
  * @TODO: (2.) create new articles with:
  *  - id: "SKU-300926", description: "Pfanne", unit-price: 49.99 EUR
  *  - id: "SKU-663942", description: "Fahrradhelm", unit-price: 169.00 EUR
  *  - id: "SKU-583978", description: "Fahrradkarte", unit-price: 6.95 EUR (reduced 7% tax rate)
  * //
  * and add to List<Article> articles;
- * 
- * 
+ *
+ *
  * @TODO: (3.) create three new orders:
- * 
+ *
  * // Lena's order
  * +----------+--------------------------------------------+----------------------+
  * |6173043537| Lena's Bestellung:                         |                      |
  * |          |  - 1 Buch "Java"         3.26*    49.90 EUR|                      |
  * |          |  - 1 Fahrradkarte        0.45*     6.95 EUR|     3.71    56.85 EUR|
  * +----------+--------------------------------------------+----------------------+
- * 
+ *
  * // Eric's 3rd order
  * +----------+--------------------------------------------+----------------------+
  * |7372561535| Eric's Bestellung:                         |                      |
  * |          |  - 1 Fahrradhelm        26.98    169.00 EUR|                      |
  * |          |  - 1 Fahrradkarte        0.45*     6.95 EUR|    27.43   175.95 EUR|
  * +----------+--------------------------------------------+----------------------+
- * 
+ *
  * // Eric's 3rd order
  * +----------+--------------------------------------------+----------------------+
  * |4450305661| Eric's Bestellung:                         |                      |
@@ -764,7 +754,7 @@ Navigate to label @TODO (1.) and complete the challenge:
  * |          |  - 3 Becher, 3x 1.49     0.71      4.47 EUR|                      |
  * |          |  - 1 Kanne               3.19     19.99 EUR|     5.33    33.43 EUR|
  * +----------+--------------------------------------------+----------------------+
- * 
+ *
  */
 ```
 
@@ -810,18 +800,17 @@ Artikel:
 +----------+----------------------------+---------------+----------------------+
 ```
 
-
-### D2.b *find()* method
+### D2.b _find()_ method
 
 TODO: (4.)
 
-Navigate to label @TODO (4.) and implement the *find()* method:
+Navigate to label @TODO (4.) and implement the _find()_ method:
 
 ```java
 /**
  * Find first matching object from the collection. Return empty Optional
- * if no object was found. 
- * 
+ * if no object was found.
+ *
  * @param <T> generic type of objects in collection.
  * @param collection collection of objects of type T.
  * @param matcher function that returns matching result for an object.
@@ -838,18 +827,17 @@ public <T> Optional<T> find(List<T> collection, Function<T, Boolean> matcher) {
 }
 ```
 
-
-### D2.c *printOrder()* method
+### D2.c _printOrder()_ method
 
 @TODO: (5.)
 
-Navigate to label @TODO (5.) and implement the *printOrder()* method such that it
+Navigate to label @TODO (5.) and implement the _printOrder()_ method such that it
 prints one order in table format:
 
 ```java
 /**
  * Print one order in table format into a StringBuilder, used by printOrders().
- * 
+ *
  * @param order order to print into table.
  * @param tf table formatter used by printOrders().
  * @return table formatter used by printOrders().
@@ -860,7 +848,7 @@ public TableFormatter printOrder(Order order, TableFormatter tf) {
 
     /**
      * @TODO: (5.) implement method to print order in table-format:
-     * 
+     *
      * +----------+--------------------------------------------+----------------------+
      * |8592356245| Eric's Bestellung:                         |                      |
      * |          |  - 4 Teller, 4x 6.49     4.14     25.96 EUR|                      |
@@ -868,10 +856,10 @@ public TableFormatter printOrder(Order order, TableFormatter tf) {
      * |          |  - 1 Buch "OOP"          5.23*    79.95 EUR|                      |
      * |          |  - 4 Tasse, 4x 2.99      1.91     11.96 EUR|    13.18   129.79 EUR|
      * +----------+--------------------------------------------+----------------------+
-     * 
+     *
      * Figure out which data is need from the order at which place in the table
      * and extract that data from the order object.
-     * 
+     *
      * Fill in each row using the tf.row() method (see example below).
      */
 
@@ -881,13 +869,12 @@ public TableFormatter printOrder(Order order, TableFormatter tf) {
 }
 ```
 
-
 ### D2.d Order Value and Tax Calculations
 
 @TODO: (6. - 9.)
 
 Navigate to labels @TODO (6. - 9.) and implement methods for calculations:
-*printOrder()*.
+_printOrder()_.
 
 Implement the method to calculate the value of an order:
 
@@ -896,7 +883,7 @@ Implement the method to calculate the value of an order:
  * Calculate value of an order, which is comprised of the value of each
  * ordered item. The value of each item is calculated with
  * calculateOrderItemValue(item).
- * 
+ *
  * @param order to calculate value for.
  * @return value of order.
  */
@@ -919,8 +906,8 @@ Implement the method to calculate the value of an orderItem:
 ```java
 /**
  * Calculate value of an order item, which is calculated by:
- * article.unitPrice * number of units ordered. 
- * 
+ * article.unitPrice * number of units ordered.
+ *
  * @param item to calculate value for.
  * @return value of item.
  */
@@ -945,7 +932,7 @@ Implement the method to calculate the VAT of an order:
  * Calculate VAT of an order, which is comprised of the VAT of each
  * ordered item. The VAT of each item is calculated with
  * calculateOrderItemVAT(item).
- * 
+ *
  * @param order to calculate VAT tax for.
  * @return VAT calculated for order.
  */
@@ -970,7 +957,7 @@ Implement the calculation of included VAT in a gross value:
 /**
  * Calculate included VAT (Value-Added Tax) from a gross price/value based on
  * a tax rate (VAT is called <i>"Mehrwertsteuer" (MwSt.)</i> in Germany).
- * 
+ *
  * @param grossValue value that includes the tax.
  * @param tax applicable tax rate in percent.
  * @return tax included in gross value.
@@ -985,7 +972,6 @@ public long calculateVAT(final long grossValue, final TAX tax) {
     return 0L;
 }
 ```
-
 
 &nbsp;
 
@@ -1011,7 +997,6 @@ drwxr-xr-x 1      0 May  5 23:17 classes/
 drwxr-xr-x 1      0 May  5 23:17 resources/
 drwxr-xr-x 1      0 May  5 23:17 test-classes/
 ```
-
 
 ### b.) Running the packaged Application
 
@@ -1103,4 +1088,3 @@ done.
 ```
 
 The packaged `.jar`-file: `application-1.0.0-SNAPSHOT.jar` can now be distributed.
-
